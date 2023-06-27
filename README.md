@@ -76,7 +76,7 @@ first install both the figtree and the ANN library by cloning the
 following repository and building the libraries.
 
 ```sh
-git clone https://github.com/jplumail/pyfigtree
+git clone --recurse-submodules https://github.com/jplumail/pyfigtree
 cd pyfigtree/figtree/
 make
 cd ..
@@ -85,6 +85,7 @@ cd ..
 Then copy the libraries inside the `pyfigtree` directory.
 
 ```sh
+mkdir pyfigtree/lib
 cp figtree/lib/* pyfigtree/lib
 ```
 
