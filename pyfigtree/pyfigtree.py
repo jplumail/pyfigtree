@@ -116,10 +116,11 @@ USA
 
 import numpy as np
 import ctypes as C
+import os
 
 # automatically loads ANN library if needed
-# both have to be available on $LD_LIBRARY_PATH
-_lib = C.cdll.LoadLibrary('libfigtree.so')
+lib_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib", "libfigtree.so")
+_lib = C.cdll.LoadLibrary(lib_path)
 
 # returns an integer
 _lib.figtree.restype = C.c_int
@@ -392,8 +393,8 @@ class FigtreeTest(unittest.TestCase):
         """
 
         #add column for multiplicity
-        index_array = np.empty((array_in.shape[0],),dtype=np.int)
-        multiplicities = np.empty((array_in.shape[0],),dtype=np.int)
+        index_array = np.empty((array_in.shape[0],),dtype=np.int64)
+        multiplicities = np.empty((array_in.shape[0],),dtype=np.int64)
 
         # count unique entries
         index = 0

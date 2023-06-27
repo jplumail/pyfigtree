@@ -61,26 +61,49 @@ plt.hist(samples, histtype='stepfilled', normed=True)
 plt.show()
 ```
 
-Installation
+Installation with pip
+------------
+
+```sh
+pip install pyfigtree
+```
+
+Installation from source
 ------------
 
 This wrapper has been developed and tested only on linux. To use it,
-first install both the figtree and the ANN library following the
-instructions at https://github.com/vmorariu/figtree and make the
-libraries available to the loader at runtime. For example,
+first install both the figtree and the ANN library by cloning the 
+following repository and building the libraries.
 
 ```sh
-export FIGTREEDIR=/path/to/figtree
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FIGTREEDIR/lib
-export PYTHONPATH=/path/to/pyfigtree:$PYTHONPATH
+git clone https://github.com/jplumail/pyfigtree
+cd figtree/
+make
+cd ..
+```
+
+Then copy the libraries inside the `pyfigtree` directory.
+
+```sh
+cp figtree/lib/* pyfigtree/lib
 ```
 
 Then
 
-* add `pyfigtree.py` to your `PYTHON_PATH`;
-* make sure `numpy` is installed;
-* test the setup by executing `python figtree.py` to run a set of unit
-  tests.
+```sh
+pip install .
+```
+
+Building and uploading to PyPI
+------------
+
+You will need to rename the wheel from `linux` to `manylinux1` before 
+uploading it to PyPI. 
+
+```sh
+python -m build
+twine upload dist/*
+```
 
 Historical note
 ---------------
