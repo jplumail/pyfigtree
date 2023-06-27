@@ -77,7 +77,7 @@ following repository and building the libraries.
 
 ```sh
 git clone https://github.com/jplumail/pyfigtree
-cd figtree/
+cd pyfigtree/figtree/
 make
 cd ..
 ```
